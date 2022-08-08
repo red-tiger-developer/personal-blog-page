@@ -1,3 +1,11 @@
+---
+title: Creando queries dinámicas con Typeorm para flojear más. Quiero decir hacer menos código
+author: Benjamin
+date: 2022-08-03 14:10:00 +0400
+categories: [backend, orm, hackcode]
+tags: [backend, typescript, hackcode, nestjs, nodejs]
+render_with_liquid: false
+---
 
 # Creando queries dinámicas con Typeorm para flojear más. Quiero decir hacer menos código
 
@@ -290,3 +298,5 @@ const movements = await this.movementService.findByFilter(filter)
 ## Conclusiones
 
 Nada de conclusiones acá hay un meme
+
+![meme](https://i.ibb.co/6PLpqVQ/meme-Link-id.jpg)
