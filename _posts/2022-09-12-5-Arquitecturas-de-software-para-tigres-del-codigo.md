@@ -1,5 +1,5 @@
 ---
-title: 5 Arquitecturas de software para machos alfa
+title: 5 Arquitecturas de software para tigres del código
 author: Benjamin
 date: 2022-09-12 14:10:00 +0400
 categories: [backend,fullstack,software-engineer, hackcode]
@@ -238,3 +238,5 @@ son mas autoexplicativas y pueden escalar a arquitecturas mas complejas sin perd
 
 
 Conclusión para la casa solo memes
+
+![meme](https://i.ibb.co/xMC9HDn/memepost2.jpg)
