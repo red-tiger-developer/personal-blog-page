@@ -406,7 +406,44 @@ Generamos la siguiente estructura:
 
 ## Iniciando la integración con Northwind
 
-Para levantar la base de datos necesitar tener instalado docker y docker-compose ahora iniciamos nuestra base de datos de Northwind con docker-compose y un script del esquema de Northwind encontrados en el siguiente repositorio: [URL REPO] nos dirigimos al directorio northwind-db/ y ejecutamos:
+Para levantar la base de datos necesitar tener instalado docker y docker-compose ahora iniciamos nuestra base de datos de Northwind con docker-compose y un script del esquema de Northwind encontrados en el siguiente repositorio [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal) nos dirigimos al directorio northwind-db/ y encontraremos un archivo docker-compose.yml con el siguiente contenido:
+
+```yaml
+version: '3'
+
+services:
+  db:
+    container_name: northwind-db
+    image: postgres:13
+    environment:
+      POSTGRES_DB: northwind
+      POSTGRES_USER: northwind
+      POSTGRES_PASSWORD: northwind
+    volumes:
+      - postgresql_bin:/usr/lib/postgresql
+      - postgresql_data:/var/lib/postgresql/data
+      - ./northwind.sql:/docker-entrypoint-initdb.d/northwind.sql
+      - ./files:/files
+    ports:
+      - 5432:5432
+    networks:
+      - db
+
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  pgadmin_root_prefs:
+    driver: local
+  postgresql_data:
+    driver: local
+  postgresql_bin:
+    driver: local
+
+````
+
+entonces ejecutamos lo siguiente
 
 ```bash
 # up database
