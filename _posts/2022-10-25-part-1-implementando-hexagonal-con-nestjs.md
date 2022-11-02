@@ -1,5 +1,5 @@
 ---
-title: Implementando una arquitectura hexagonal con nestjs Parte I
+title: Arquitectura hexagonal con nestjs Parte I
 author: Benjamin
 date: 2022-10-25 10:32:00 -0500
 categories: [Programacion, Nestjs, Arquitectura de software, Typescript]
@@ -120,10 +120,10 @@ nest g module infraestructure
 ## Creando la capa de dominio
 
 Generaremos la siguiente estructura en la capa de dominio:
-* entities: entidades relacionadas para la creación de un producto
-* ports/inbound: acá se encuentran los puertos de entrada representan piezas de software que interactúan con el dominio y pueden cambiar el estado del dominio
-* ports/outbound: representan los puertos de salida que interactúan con el mundo exterior es decir fuera de la capa de dominio y se relacionan con tecnologías o sistemas en este ejemplo son repositorios así que los adaptadores que implementen estas interfaces se comunicaran con alguna base de datos o método de persistencia cosa que el dominio no le interesa saber
-* services: estos son los servicios de dominios eran las implementaciones de 'ports/inbound'son piezas de software que interactúan con las entidades y definen reglas de negocio también definiremos los tests unitarios.
+* `entities`: entidades relacionadas para la creación de un producto
+* `ports/inbound`: acá se encuentran los puertos de entrada representan piezas de software que interactúan con el dominio y pueden cambiar el estado del dominio
+* `ports/outbound`: representan los puertos de salida que interactúan con el mundo exterior es decir fuera de la capa de dominio y se relacionan con tecnologías o sistemas en este ejemplo son repositorios así que los adaptadores que implementen estas interfaces se comunicaran con alguna base de datos o método de persistencia cosa que el dominio no le interesa saber
+* `services`: estos son los servicios de dominios serán las implementaciones de `ports/inbound` que son piezas de software que interactúan con las entidades y definen reglas de negocio también definiremos los tests unitarios.
 
 
 ```bash
@@ -406,7 +406,7 @@ Generamos la siguiente estructura:
 
 ## Iniciando la integración con Northwind
 
-Para levantar la base de datos necesitar tener instalado docker y docker-compose ahora iniciamos nuestra base de datos de Northwind con docker-compose y un script del esquema de Northwind encontrados en el siguiente repositorio [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal) nos dirigimos al directorio northwind-db/ y encontraremos un archivo docker-compose.yml con el siguiente contenido:
+Para levantar la base de datos necesitar tener instalado docker y docker-compose ahora iniciamos nuestra base de datos de Northwind con docker-compose y un script del esquema de Northwind encontrados en el siguiente repositorio [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal/tree/main/clean-architecture-examples/part-1-create-hexagonal-app-with-nestjs) nos dirigimos al directorio northwind-db/ y encontraremos un archivo docker-compose.yml con el siguiente contenido:
 
 ```yaml
 version: '3'
