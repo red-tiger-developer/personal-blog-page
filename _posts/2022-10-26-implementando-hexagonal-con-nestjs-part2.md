@@ -174,20 +174,7 @@ Ahora crearemos una objeto que definirá nuestro custom provider este deberá te
 
 Entonces para crear un Custom Provider para un servicio de dominio será de la siguiente manera:
 
-Donde  `supplierRepository` proviene del objeto `CoreModuleOptions`
 
-```typescript
-
-const ProductServiceProvider = {
-  provide: SUPPLIER_SERVICE,
-  useFactory(repository: SupplierRepository) {
-    return new SupplierDomainService(repository)
-  },
-  inject:[
-    supplierRepository
-  ]
-}
-```
 Como nuestro modelo lo indica para crear el servicio de dominio ProductService
 
 ```typescript
@@ -213,7 +200,26 @@ necesitamos de un ProductRepository
 ```typescript
 constructor(private repository: ProductRepository) {}
 ```
-La función useFactory es sencilla solo recibe los providers inyectados por Nestjs que necesitamos y con eso podemos instanciar un Servicio de forma manual pero adecuado a nuestras necesitades en este caso nosotros devolvemos la instancia de una implementacion de la interfaz `ProductApplication`
+
+Donde  `productRepository` proviene del objeto `CoreModuleOptions` entonces creamos una función `ProductServiceProvider` donde injectaremos los servicios necesarios para crear nuestro `ProductDomainService`
+
+```typescript
+
+const ProductServiceProvider = {
+  provide: PRODUCT_SERVICE, // provider token
+  useFactory(repository: ProductRepository) {
+    // return a service instance 
+    return new ProductDomainService(repository)
+  },
+  inject:[
+    productRepository // get this value from CoreModuleOptions
+  ]
+}
+```
+
+La función useFactory es sencilla solo recibe los providers inyectados por Nestjs que necesitamos y con eso podemos instanciar un Servicio de forma manual pero adecuado a nuestras necesitades.
+
+En este otro caso nosotros devolvemos la instancia de una implementacion de la interfaz `ProductApplication`
 
 ```typescript
 
