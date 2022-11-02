@@ -1,7 +1,7 @@
 ---
 title: Arquitectura hexagonal Parte II Conectando una clean architecture con Nestjs
 author: Benjamin
-date: 2022-10-25 10:32:00 -0500
+date: 2022-10-26 10:32:00 -0500
 categories: [Programacion, Nestjs, Arquitectura de software, Typescript]
 tags: [typescript, nestjs, hexagonal]
 ---
