@@ -7,9 +7,6 @@ tags: [typescript, nestjs, hexagonal]
 ---
 
 
-
-# Arquitectura hexagonal Parte II: Conectando una clean architecture con Nestjs
-
 ![logo](https://i.ibb.co/6nTjp5n/Screen-Shot-2022-11-02-at-16-17-23.png)
 
 La segunda parte de esta serie de arquitectura hexagonal o (clean architecture) profundizaremos como configurar la interacción de un framework con el core de nuestra arquitectura, Nestjs nos ofrece un diseño adaptable para poder cubrir casos de uso avanzado. La idea es estar lo menos acoplados al framework y que este se adapte a nuestra capa `core` la cual contienen los casos de uso, las reglas de negocio y las entidades.
@@ -408,6 +405,10 @@ export class AppModule { }
 Finalmente integramos nuestra arquitectura hexagonal con Nestjs de una manera totalmente desacoplada del framework. La versatilidad de los módulos dinámicos y custom providers nos permiten crear aplicaciones mantenibles y con lógicas desconectadas de frameworks o las librerías de moda. Este mismo enfoque de los módulos dinámicos es una buena práctica al momento de definir grupos de piezas de software que queremos que sean flexibles y configurables de una forma centralizada.
 
 ## [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal/tree/main/clean-architecture-examples/part-2-connecting-core-infraestructure-with-nestjs)
+
+Puedes ver los demás artículos de arquitectura hexagonal acá 😉
+
+ * [Arquitectura hexagonal Parte I ](/posts/implementando-hexagonal-con-nestjs-part1/)
 
 ## Conclusión
 

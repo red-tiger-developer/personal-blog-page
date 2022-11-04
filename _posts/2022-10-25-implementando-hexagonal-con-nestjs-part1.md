@@ -6,7 +6,6 @@ categories: [Programacion, Nestjs, Arquitectura de software, Typescript]
 tags: [typescript, nestjs, hexagonal]
 ---
 
-# Arquitectura hexagonal con Nestjs Parte I
 
 ![image](https://i.ibb.co/5r0wpwC/Hexagonal-1207406438.png)
 
@@ -686,6 +685,9 @@ El core de nuestra arquitectura hexagonal esta completo, definimos pruebas unita
 
  Ahora nos queda configurar los módulos `core`, `infraestructure` y `northwind-database`, para ello necesitamos definir CustomProviders y Módulos dinámicos de Nestjs, estos son temas avanzados dentro el framework que los abordaré en otro post con mayor detalle les dejaré el repositorio con el código donde podrán revisar la configuración, pero se vienen cosas más avanzadas donde explicaremos a fondo estas funcionalidades y que podemos hacer.
 
+Puedes ver los demás artículos de arquitectura hexagonal acá 😉
+
+ * [Arquitectura hexagonal Parte II ](/posts/implementando-hexagonal-con-nestjs-part2/)
 
 ## [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal)
 
