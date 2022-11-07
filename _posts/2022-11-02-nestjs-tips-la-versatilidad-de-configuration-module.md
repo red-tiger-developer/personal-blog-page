@@ -1,5 +1,5 @@
 ---
-title: Nestjs tips La veratilidad de ConfigMdule 
+title: Nestjs tips La versatilidad de ConfigMdule 
 author: Benjamin
 date: 2022-10-28 10:32:00 -0500
 categories: [Programacion, Nestjs, Arquitectura de software, Typescript]
@@ -33,7 +33,7 @@ DATABASE_USER="northwind"
 DATABASE_PASSWORD="northwind"
 ```
 
-> Como tip les recomiento que los nombres sean lo mas descriptivo posible.Por ejemplo `SERVER_PORT ` es tiene más contexto que `PORT`. 
+> Como tip les recomiento que los nombres sean lo mas descriptivo posible. Por ejemplo `SERVER_PORT ` tiene más contexto que `PORT`. 
   
 
 Ahora crearemos nuestras interfaces que definirán la estructura de nuestras configuraciones y su vez crearemos sus respectivos métodos `factory`
