@@ -688,6 +688,7 @@ El core de nuestra arquitectura hexagonal esta completo, definimos pruebas unita
 Puedes ver los demás artículos de arquitectura hexagonal acá 😉
 
  * [Arquitectura hexagonal Parte II ](/posts/implementando-hexagonal-con-nestjs-part2/)
+  * [Arquitectura hexagonal Parte III ](/posts/implementando-hexagonal-con-nestjs-part3/)
 
 ## [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal)
 

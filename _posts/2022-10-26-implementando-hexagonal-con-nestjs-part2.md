@@ -410,6 +410,8 @@ Puedes ver los demás artículos de arquitectura hexagonal acá 😉
 
  * [Arquitectura hexagonal Parte I ](/posts/implementando-hexagonal-con-nestjs-part1/)
 
+* [Arquitectura hexagonal Parte III ](/posts/implementando-hexagonal-con-nestjs-part3/)
+
 ## Conclusión
 
 No soy de conclusiones estas siempre van por parte de ti y si intentas poner en práctica lo expuesto podrás tener un concepto más amplio del tema e incluso poder aplicarlo en otros escenarios.
