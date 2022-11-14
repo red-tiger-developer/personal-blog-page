@@ -961,3 +961,6 @@ Puedes ver los demás artículos de arquitectura hexagonal acá 😉
 ## [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal/tree/main/clean-architecture-examples/part-3-domain-full-design-with-ddd)
 
 
+### Meme de cortesía
+
+![meme](https://i.ibb.co/FBFxSNy/Screen-Shot-2022-11-14-at-10-44-23.png)
