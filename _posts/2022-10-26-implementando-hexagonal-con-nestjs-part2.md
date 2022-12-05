@@ -409,8 +409,8 @@ Finalmente integramos nuestra arquitectura hexagonal con Nestjs de una manera to
 Puedes ver los demás artículos de arquitectura hexagonal acá 😉
 
  * [Arquitectura hexagonal Parte I ](/posts/implementando-hexagonal-con-nestjs-part1/)
-
 * [Arquitectura hexagonal Parte III ](/posts/implementando-hexagonal-con-nestjs-part3/)
+* [Arquitectura hexagonal Parte IV ](/posts/implementando-hexagonal-con-nestjs-part4/)
 
 ## Conclusión
 

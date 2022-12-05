@@ -957,6 +957,7 @@ Puedes ver los demás artículos de arquitectura hexagonal acá 😉
 
  * [Arquitectura hexagonal Parte I ](/posts/implementando-hexagonal-con-nestjs-part1/)
  * [Arquitectura hexagonal Parte II ](/posts/implementando-hexagonal-con-nestjs-part2/)
+ * [Arquitectura hexagonal Parte IV ](/posts/implementando-hexagonal-con-nestjs-part4/)
 
 ## [Github repository](https://github.com/nullpointer-excelsior/nestjs-northwind-hexagonal/tree/main/clean-architecture-examples/part-3-domain-full-design-with-ddd)
 
