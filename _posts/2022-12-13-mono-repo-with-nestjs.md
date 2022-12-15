@@ -413,6 +413,10 @@ make produce; sleep 1; make produce; sleep 1; make produce
 
 Esta es la forma más simple de utilizar una arquitectura orientada a eventos. Generamos un proyecto de tipo mono Repositorio para poder reutilizar nuestras piezas de software y seguir una misma implementación con Nestjs, La estrategia de mono repositorio debes analizarla bien, ya que dependerá de tus necesidades y tipo de proyecto pero para empezar a jugar no está mal.
 
+## [Github repository](https://github.com/nullpointer-excelsior/nestjs-rabbitmq-architecture)
+
+
 Acá el meme de despedida
+
 
 ![meme](https://i.ibb.co/899qQr1/Zombo-Meme-01122022233002.jpg)
