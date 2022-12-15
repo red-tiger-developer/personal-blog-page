@@ -1,10 +1,12 @@
 ---
-title: Mono repositorios con Nestjs para una arquitectura distribuida
+title: Mono Repositorios con Nestjs Para una Arquitectura Orientada a Eventos
 author: Benjamin
 date: 2022-12-13 10:32:00 -0500
 categories: [Programacion, Nestjs, Typescript, Events]
 tags: [typescript, nestjs, rabbitmq]
 ---
+
+![image](https://i.ibb.co/Pgt2j53/Screen-Shot-2022-12-13-at-18-24-41.png)
 
 Definir una arquitectura distribuida puede llegar a ser complejo cuando manejas muchos proyectos o servicios y estos tienen que interactuar entre sí. Cada servicio tendrá su propio repositorio y nos dará la ventaja de usar la tecnología adecuada al problema específico a solucionar, pero cuando tu stack tecnológico comparte el mismo lenguaje o framework podrías pensar en usar Monorepositorios.
 Monorepo es enfoque de desarrollar múltiples aplicaciones dentro de un solo repositorio. Esto podemos verlo muchas veces en arquitecturas de microservicios centralizando todas las aplicaciones dentro de un mismo proyecto donde podremos reutilizar ciertas piezas de software entre aplicaciones sin necesidad de desplegar librerías asociadas a gestores de dependencias. Si bien esto trae ventajas también trae desafíos al momento de desplegar y de definir una arquitectura escalable y mantenible. Pero como todo enfoque este debe ser evaluado según tu caso y necesidades.
@@ -13,7 +15,7 @@ Nestjs nos provee una forma fácil de implementar monorepositorios, su mágica e
 
 ## Creando un Monorepositorio con Nestjs
 
-Podemos empezar creando una simple aplicación con nestjs
+Podemos empezar creando una simple aplicación con NestJs
 
 ```bash
 #!/bin/bash
@@ -27,7 +29,7 @@ Hemos creado una aplicación llamada `main-application` nada nuevo donde el cód
 nest generate app other-application
 ```
 
-Nuestra aplicación cambio su estructura, elimino su carpeta `src` y creo un nuevo directorio en la raíz del proyecto llamado `apps` dentro del cual se ubicaran las aplicaciones.
+Nuestra aplicación cambio su estructura, Se creo un nuevo directorio en la raíz del proyecto llamado `apps` dentro del cual se ubicaran las aplicaciones. Nuestra carpeta `src` es movida a `main-application`.
 
 ```bash
  apps
@@ -54,7 +56,7 @@ Nuestra aplicación cambio su estructura, elimino su carpeta `src` y creo un nue
     │   └──  jest-e2e.json
     └──  tsconfig.app.json
 ```
-Ahora a su vez también podemos crear librerías donde podremos compartir código entre aplicaciones.
+Ahora también podemos crear librerías donde podremos compartir código entre aplicaciones.
 
 ```bash
 #!/bin/bash
@@ -74,11 +76,11 @@ Esto creará un directorio en la raíz del proyecto llamado `libs`.
     └──  tsconfig.lib.json
 ```
 
-Esto es todo, ya podemos trabajar con monorepositorios dentro de nestjs.
+Esto es todo, ya podemos trabajar con monorepositorios dentro de NestJs.
 
 ## Arquitectura orientada a eventos utilizando Monorepositorio
 
-Para ver las ventajas que nos dará los monorepositorios implementaremos una arquitectura orientada a eventos utilizando rabbitmq con una cola de mensajes y una `dead-letter` para mensajes fallidos, todo esto mediante la utilización de un custom módulo con nestjs definido como una librería compartida.
+Para ver las ventajas que nos dará los monorepositorios implementaremos una arquitectura orientada a eventos utilizando RabbitMQ con una cola de mensajes y una `dead-letter` para mensajes fallidos, todo esto mediante la utilización de un custom módulo con NestJs definido como una librería compartida.
 
 ### ¿Qué es RabbitMQ? 
 
@@ -93,48 +95,35 @@ Una Dead Letter es una cola donde los mensajes que no pudieron ser procesados po
 En el siguiente repositorio tendremos un stack tecnológico que implementa una arquitectura orientada a eventos con la cual podemos implementar el envío, consumo y reintento de mensajes asíncronos mediante un servidor RabbitMQ. Este proyecto es ideal para generar una estrategia de dead-letter-queue para la recuperación de operaciones fallidas siguiendo la arquitectura modular de nestjs y sus buenas prácticas.
 
 
-## Librería Rabbitmq-queue
+## Módulo Rabbitmq-queue
 
-Esta librería fue diseñada para funcionar con los microservicios de Nestjs y utiliza la estrategia de módulos y contiene las siguientes características:
+Este módulo fue diseñado con el paquete `@nestjs/microservices` de Nestjs y contiene las siguientes características:
 
 * `Consumer de Mensajes:` Factory de creación de microservicio Worker 
 * `Dead Letter Consumer de mensajes no procesados por error en el consumer:` Factory de creación de microservicio Recovery 
 * `Cliente Productor de mensajes:` Servicio Nesjs Injectable importando `RabbitmqModule`
 
-## Despliegue de aplicaciones y pruebas
+Nuestro módulo puede ser importado y utilizado por las aplicaciones que definamos en el directorio `apps/` y desde cualquier librería o módulo compartido que definamos en `libs/`
 
-Este proyecto requiere Node 14 o superior. Si tienes instalado NVM ejecuta lo siguiente:
-
-```bash
-nvm use 14;
-```
-Instalar dependencias
+Este proyecto requiere Node 14 o superior. instala sus dependencias y empezaremos a definir una estructura básica de prodctor, consumidor y control de errores
 
 ```bash
+#!/bin/bash
 npm install
 ```
 
-## Generar aplicaciones mono repo en Nestjs 
-si quiere probar creando otra aplicación nestjs dentro del proyecto ejecuta los siguiente
-
-```bash
-# generate a new nestjs for a mono repository 
-# the aplication will be generated in apps/ directory
-nest g app $APP_NAME
-# running app
-nest start -w $APP_NAME
-```
-## Levantar RabbitMq
+## Levantando un servidor RabbitMQ
 
 Debes tener instalado docker y ejecutar la siguiente instrucción:
 
 ```bash
-docker run --rm -it --hostname javel-rabbit -e RABBITMQ_DEFAULT_VHOST=javel -p 15672:15672 -p 5672:5672 rabbitmq:3-management
+#!/bin/bash
+docker run --rm -it --hostname rabbit-server -e RABBITMQ_DEFAULT_VHOST=mono-repo-example -p 15672:15672 -p 5672:5672 rabbitmq:3-management
 ```
 
-## Configuracíon de Aplicaciones 
+## Stack de Aplicaciones 
 
-Para configurar las aplicaciones que estarán en la misma cola rabbitmq escuchando los eventos introduciré 3 conceptos:
+Para configurar las aplicaciones que estarán en la misma cola RabbitMQ escuchando los eventos introduciré 3 conceptos:
 * `Producer:` aplicación encargada de enviar mensajes a una cola
 * `Worker:` aplicación encargada de realizar una tarea especifica dependiendo del mensjae. Será quien consuma los mensajes de una cola
 * `Recovery:` "Dead Letter Queue" aplicación encargada de consumir mensajes que no pudieron ser procesados por algún error en la aplicación `Worker`
@@ -150,7 +139,7 @@ const options: RabbitmqQueueModuleOptions = {
       host: 'localhost',
       password: 'guest',
       port: 5672,
-      vhost: 'javel',
+      vhost: 'mono-repo-example',
       user: 'guest'
     },
     queue: {
@@ -164,7 +153,7 @@ const options: RabbitmqQueueModuleOptions = {
 
 ```
 
-También deben compartir la estructura del mensaje que serán enviados a rabbitmq. Esta estructura puede ser definida de acuerdo a tus necesidades.
+También deben compartir la estructura del mensaje que serán enviados a RabbitMQ. Esta estructura puede ser definida de acuerdo a tus necesidades.
 
 Ejemplo de una estructura de mensaje
 ```typescript
@@ -178,7 +167,7 @@ Ya definida nuestra configuración y estructura de mensaje, Podemos empezar a le
 
 ### Iniciar Worker
 
-Para iniciar una aplicaión `Worker` debes ir a tu proyecto Nestjs en este caso sería apps/worker y en el archivo `apps/worker/main.ts` debes invocar la función `createWorkerMicroserviceOptions` el cual devolverá un objeto `ClientProviderOptions` el cual es necesario para iniciar un microservicio de Nestjs
+Para iniciar una aplicaión `Worker` debes ir a tu proyecto Nestjs en este caso sería `apps/worker` y en el archivo `apps/worker/main.ts` debes invocar la función `createWorkerMicroserviceOptions` el cual devolverá un objeto `ClientProviderOptions` el cual es necesario para iniciar un microservicio de Nestjs
 
 Ejemplo main.ts
 ```typescript
@@ -397,6 +386,7 @@ export class ProducerController {
 Y generamos la siguiente instrucción en curl para realizar la petición:
 
 ```bash
+#!/bin/bash
 curl -s -X POST -d '{"name": "rabbitmq-message","message": "testing message on event architecture"}' -H 'Content-type: application/json' http://localhost:3001/producer | jq
 ```
 Adicional a este comando puedes hacer uso de Make para realizar las siguientes operaciones:
@@ -404,6 +394,7 @@ Adicional a este comando puedes hacer uso de Make para realizar las siguientes o
 
 
 ```bash
+#!/bin/bash
 # start a fucking rabbitmq server
 make rabbit
 # start worker
@@ -423,3 +414,5 @@ make produce; sleep 1; make produce; sleep 1; make produce
 Esta es la forma más simple de utilizar una arquitectura orientada a eventos. Generamos un proyecto de tipo mono Repositorio para poder reutilizar nuestras piezas de software y seguir una misma implementación con Nestjs, La estrategia de mono repositorio debes analizarla bien, ya que dependerá de tus necesidades y tipo de proyecto pero para empezar a jugar no está mal.
 
 Acá el meme de despedida
+
+![meme](https://i.ibb.co/899qQr1/Zombo-Meme-01122022233002.jpg)
