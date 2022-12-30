@@ -1,9 +1,9 @@
 ---
-title: CQRS en soluciones de alto rendimiento con Nestjs
+title: CQRS en Soluciones de Alto Rendimiento con Nestjs
 author: Benjamin
 date: 2022-11-07 10:32:00 -0500
 categories: [Programacion, Nestjs, Arquitectura de software, Typescript]
-tags: [typescript, nestjs, hexagonal]
+tags: [typescript, nestjs, hexagonal, microservices]
 ---
 
 ![image](https://i.ibb.co/1Tm9pVK/Screen-Shot-2022-12-30-at-00-55-44.png)
@@ -70,10 +70,10 @@ Ahora para lograr escalar nuestro sistema no lo haremos dándole más recursos a
 
 Para lograr la mejora del rendimiento en nuestro sistema la nueva arquitectura tendrá los siguientes puntos:
 
-* `Arquitectura hexagonal`: para separación del dominio de la infraestructura (opcional).
-* `CQRS`: para separar las lecturas y escrituras sobre nuestro origen de datos.
-* `Arquitectura de microservicios`: tendremos un servicio que se encarga administrar los modelos, lecturas y escrituras de los datos, y tendremos 1 servicio encargado de sincronizar nuestro modelo de lectura.
-* `Broker de mensajería asíncrona`: un intermediario que comunicara nuestros microservicios de manera desacoplada.
+* `Arquitectura hexagonal`: Separación del dominio de la infraestructura (opcional).
+* `CQRS`: Separación de las lecturas y escrituras sobre nuestro origen de datos.
+* `Arquitectura de microservicios`: Tendremos un servicio que se encarga administrar los modelos, lecturas y escrituras de los datos, y 1 servicio encargado de sincronizar nuestro modelo de lectura.
+* `Broker de mensajería asíncrona`: Intermediario que comunicará nuestros microservicios de manera desacoplada.
 
 Todo esto se plasma en el siguiente diagrama:
 
