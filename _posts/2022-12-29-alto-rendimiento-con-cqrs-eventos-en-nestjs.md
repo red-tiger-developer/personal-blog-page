@@ -37,6 +37,7 @@ Los puntos importantes a tener en cuenta para interpretar los resultados son las
 Resumiendo las pruebas de carga realizadas en una aplicación que utiliza 1 única base de datos de lectura y escritura muestra el siguiente rendimiento:
 
 ![bad-performance](https://i.ibb.co/tZ87PD9/mal-rendimiento.png)
+![bad-performance2](https://i.ibb.co/2nW5ymj/Screen-Shot-2022-12-31-at-23-39-50.png)
 
 En promedio 17 segundos de lecturas cada segundo. Y en modo individual haciendo las pruebas obtenemos esto:
 
@@ -64,7 +65,7 @@ La arquitectura inicial de esta aplicación era la siguiente:
 
 ![basic-architecture](https://i.ibb.co/GWMqMk8/Screen-Shot-2022-12-29-at-17-17-55.png)
 
-Ahora para lograr escalar nuestro sistema no lo haremos dándole más recursos a nuestra base de datos (escalado vertical) y tampoco subiremos la cantidad de instancias de la aplicación (escaldo vertical), Si bien esto en muchos casos es suficiente, También tendremos escenarios donde el costo beneficio no será eficiente subiendo los recursos y para evitar elevar estos costos más de lo necesario debemos aprovechar los recursos disponibles al inicio antes de empezar el escalado de nuestra arquitectura.
+Ahora para lograr escalar nuestro sistema no lo haremos dándole más recursos a nuestra base de datos (escalado vertical) y tampoco subiremos la cantidad de instancias de la aplicación (escaldo vertical), Si bien esto en muchos casos es suficiente, También tendremos escenarios donde el costo beneficio no logrará ser eficiente subiendo los recursos y para no elevar los costos más de lo necesario debemos aprovechar los recursos disponibles al inicio antes de empezar el escalado de nuestra arquitectura.
 
 ## Arquitectura de alto rendimiento basada en microservicios 
 
@@ -84,6 +85,7 @@ Todo esto se plasma en el siguiente diagrama:
 Nuestra nuevo enfoque basado en microservicios esta listo y ahora si realizamos las mismas pruebas de carga sobre nuestra nueva arquitectura obtenemos los siguientes resultados:
 
 ![good-performance](https://i.ibb.co/ZWdKHpG/buen-rendimiento.png)
+![good-performance](https://i.ibb.co/XDm3nLj/Screen-Shot-2022-12-31-at-23-41-56.png)
 
 Una diferencia bastante notoria en este caso nos centramos en una solución a nivel de arquitectura representando la realidad de muchos sistemas a gran escala. No nos centramos en escalar nuestra aplicación y la base de datos sin antes aprovechar ya los recursos disponibles. Tampoco no siempre es viable reescribir una aplicación desde cero en lenguajes más eficientes como Go o Rust. En definitiva, tendremos muchos casos, realidades y tecnologías disponibles y nosotros como ingenieros debemos encontrar el mejor costo beneficio de una solución. 
 
