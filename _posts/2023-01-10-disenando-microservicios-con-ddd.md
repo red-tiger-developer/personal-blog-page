@@ -499,7 +499,7 @@ export class EventQueueService {
 }
 ```
 
-## Registrando de modulos en microservicio
+## Registro de módulos en nuestros microservicios
 
 Con nuestros puertos definidos ahora inicializaremos nuestro módulo `tracking` en el archivo `apps/tracking-ms/src/core/core.module.ts` haciendo uso de los providers del módulo `AdaperModule`
 
