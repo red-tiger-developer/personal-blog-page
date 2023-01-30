@@ -36,7 +36,7 @@ Diferencia entre Streams y Arreglos:
 * Un elemento es visitado solo una vez.
 * No tienen un tamaño fijo. Un stream puede alimentarse de una fuente de datos infinita.
 
-## Programación imperativa v/s Funcional
+## Programación imperativa vs Funcional
 
 La capacidad de utilizar programación funcional nos da la posibilidad de crear código más legible y mantenible cuando 
 las lógicas de negocio van cambiando y el volumen de datos empieza a ser un problema y necesitamos agregar nuevas operaciones.
