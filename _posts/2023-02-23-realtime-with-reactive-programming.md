@@ -447,13 +447,6 @@ pip3 install requests
 python3 score_client.py
 ```
 
-Ejecuta el siguiente script para simular las peticiones de jugadores usando:
-```bash
-#!/bin/bash
-
-# run server
-npm run start:dev
-```
 Ahora ve a http://localhost:3000/graphql y verás el Playground de GraphQL donde puedes realizar las consultas que te salga de los cojones:
 
 Puedes crear un score:
