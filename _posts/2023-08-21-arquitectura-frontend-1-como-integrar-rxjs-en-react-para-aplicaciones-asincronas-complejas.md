@@ -6,7 +6,7 @@ categories: [Frontend, React, Rxjs, Arquitectura Frontend, Javascript, Typescrip
 tags: [frontend, react, rxjs, arquitectura frontend, javascript, typescript]
 ---
 
-![image](https://i.ibb.co/vcf5t0f/Screenshot-2023-08-21-at-14-12-34.png)
+![image](https://i.ibb.co/Ct3vP4V/Screenshot-2023-08-21-at-17-06-58.png)
 
 React es una excelente librería para crear componentes visuales. También nos brinda los hooks, con los cuales podemos trabajar con estados y efectos secundarios en situaciones asíncronas. Si bien para casos sencillos esto puede ser suficiente, manejar flujos asíncronos complejos puede hacer que nuestros componentes se conviertan en una ensalada de código. Afortunadamente, podemos integrar fácilmente RxJS para enfrentar estas situaciones. RxJS es una poderosa librería que nos permite trabajar con flujos asíncronos y eventos, permitiendo la reutilización de código y la creación de aplicaciones con alto flujo de datos y eventos.
 
