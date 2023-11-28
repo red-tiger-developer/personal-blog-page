@@ -593,4 +593,4 @@ La observabilidad es un aspecto crucial para el desarrollo y la operación de mi
 
 ### Meme de cortesía:
 
-![meme](https://i.ibb.co/6F6XkPM/Screenshot-2023-11-27-at-11-57-42.png)
+![meme](https://i.ibb.co/qdG0XN6/Screenshot-2023-11-28-at-11-50-32.png)
